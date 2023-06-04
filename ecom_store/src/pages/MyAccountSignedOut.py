@@ -1,11 +1,13 @@
 
 from ecom_store.src.pages.locators.MyAccountSignedOutLocators import MyAccountSignedOutLocators
+from ecom_store.src.pages.locators.MyAccountSignedInLocators import MyAccountSignedInLocators
 from ecom_store.src.selenium_extended.SeleniumExtended import SeleniumExtended
 from ecom_store.src.configs.MainConfigs import MainConfigs
+
 import logging as logger
 
 
-class MyAccountSignedOut(MyAccountSignedOutLocators):
+class MyAccountSignedOut(MyAccountSignedOutLocators, MyAccountSignedInLocators):
 
     endpoint = '/my-account/'
 
@@ -43,3 +45,10 @@ class MyAccountSignedOut(MyAccountSignedOutLocators):
     def click_register_button(self):
         logger.debug("Clicking 'Register' button.")
         self.sl.wait_and_click(self.REGISTER_BTN)
+    def verify_user_is_logged_in(self):
+        logout_btn = self.sl.wait_until_element_is_visible(self.LEFT_NAV_LOGOUT_BTN)
+        assert logout_btn.is_displayed() == True, f"valid user is not loged in "
+
+
+
+
