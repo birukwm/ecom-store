@@ -1,0 +1,5 @@
+
+export BASE_URL=https://shop.biruke.com/
+export USER=birbisrat@gmail.com
+export PASSWORDLP=Rahel@s49
+export BROWSER=chrome

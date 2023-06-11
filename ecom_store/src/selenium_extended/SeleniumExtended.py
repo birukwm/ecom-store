@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.keys import Keys
 
 import time
 
@@ -95,6 +96,12 @@ class SeleniumExtended:
         elem = WebDriverWait(self.driver, timeout).until(
             EC.url_contains(url_substring)
         )
+
+    def wait_and_press_enter(self,locator,timeout=None):
+        timeout = timeout if timeout else self.default_timeout
+        WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located(locator)
+        ).send_keys(Keys.RETURN)
 
     def wait_and_select_dropdown(self, locator, to_select, select_by='visible_text'):
         """
