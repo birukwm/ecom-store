@@ -43,3 +43,20 @@ class MyAccountSignedOut(MyAccountSignedOutLocators):
     def click_register_button(self):
         logger.debug("Clicking 'Register' button.")
         self.sl.wait_and_click(self.REGISTER_BTN)
+    def click_lost_your_password_link(self):
+        self.sl.wait_and_click(self.LOST_PASSWORD)
+    def input_lost_password_email(self, email='birbisrat@gmail.com'):
+
+        self.sl.wait_and_input_text(self.LOST_PASS_USER, email)
+    def click_reset_password_button(self):
+        self.sl.wait_and_click(self.RESET_PASSWORD)
+    def verify_correct_password_reset_message_is_displayed(self):
+
+        my_alert = self.sl.wait_until_element_is_visible(self.Message_ALERT)
+        actual_message = my_alert.text
+        expected_message = 'Password reset email has been sent.'
+
+        assert actual_message == expected_message ,f" Correct alert message is not displayed, \
+            instead {actual_message} is printed "
+
+

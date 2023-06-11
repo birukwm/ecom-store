@@ -12,3 +12,8 @@ class MyAccountSignedOutLocators:
     REGISTER_EMAIL = (By.ID, 'reg_email')
     REGISTER_PASSWORD = (By.ID, 'reg_password')
     REGISTER_BTN = (By.CSS_SELECTOR, 'button[value="Register"]')
+
+    LOST_PASSWORD = (By.CSS_SELECTOR, 'a[href="https://shop.biruke.com/my-account/lost-password/"]')
+    LOST_PASS_USER = (By.ID,'user_login')
+    RESET_PASSWORD = (By.CSS_SELECTOR, "button[value='Reset password']")
+    Message_ALERT= (By.CSS_SELECTOR,"div.woocommerce-message")

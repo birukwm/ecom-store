@@ -26,3 +26,17 @@ class HomePage(HomePageLocators):
     def get_displayed_heading(self):
         return self.sl.wait_and_get_text(self.PAGE_HEADING)
 
+    def select_sort_by_price(self):
+
+        self.sl.wait_and_select_dropdown(self.SORT,'Sort by price: low to high')
+    def verify_the_product_are_listed_by_ascending_price(self):
+
+        product_prices = self.sl.wait_and_get_elements(self.PRODUCT_AMOUNT)
+        my_list = [price.text for price in product_prices]
+        # remove the $ sign from the price list and convert them to float
+        new_list = [float(i[1:]) for i in my_list]
+        for i in range(len(new_list) - 1):
+            if new_list[i] > new_list[i+1]:
+                raise Exception(" Order by price ")
+
+
