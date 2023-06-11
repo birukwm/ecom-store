@@ -1,8 +1,8 @@
-import pytest
-
-from selenium import webdriver
-
-
+# import pytest
+#
+# from selenium import webdriver
+#
+#
 # @pytest.fixture(scope="class")
 # def init_driver(request):
 #     request.cls.driver = webdriver.Chrome()
@@ -36,7 +36,7 @@ def init_driver(request):
                         f"Supported are: {supported_browsers}")
 
     if browser in ('chrome', 'ch'):
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
     elif browser in ('firefox', 'ff'):
         driver = webdriver.Firefox()
     elif browser in ('headlesschrome'):

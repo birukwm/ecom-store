@@ -1,6 +1,7 @@
 
 from ecom_store.src.selenium_extended.SeleniumExtended import SeleniumExtended
 from ecom_store.src.pages.locators.HeaderLocators import HeaderLocators
+from selenium.webdriver.common.keys import Keys
 
 class Header(HeaderLocators):
 
@@ -27,3 +28,15 @@ class Header(HeaderLocators):
         for menu in self.expected_menu_items:
             if menu not in displayed_menu_items:
                 raise Exception(f"Menu item '{menu}' is not displayed in the header.")
+
+    def search_random_existing_product(self, product='belt'):
+        self.sl.wait_and_input_text(self.SEARCH_FIELD, product)
+    def search_product_with_return_key(self):
+        self.sl.wait_and_press_enter(self.SEARCH_FIELD)
+    def verify_searched_item_is_displayed(self):
+
+        my_products = self.sl.wait_and_get_elements(self.PRODUCTS)
+
+
+
+
